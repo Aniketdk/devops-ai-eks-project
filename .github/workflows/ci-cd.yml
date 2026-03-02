@@ -63,12 +63,13 @@ jobs:
       # 9️⃣ Apply Kubernetes Files
       - name: Deploy to EKS
         run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
 
       # 🔟 Verify Deployment
       - name: Verify Pods
         run: |
           kubectl get pods
           kubectl get svc
+
 
