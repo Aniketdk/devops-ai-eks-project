@@ -55,10 +55,10 @@ jobs:
           aws eks update-kubeconfig --region ap-south-1 --name cicd-eks-cluster
 
       # 8️⃣ Update Deployment Image
-      - name: Update Kubernetes Image
-        run: |
-          kubectl set image deployment/devops-app \
-          devops-app=${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }}
+      #- name: Update Kubernetes Image
+        #run: |
+         # kubectl set image deployment/devops-app \
+          #devops-app=${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }}
 
       # 9️⃣ Apply Kubernetes Files
       - name: Deploy to EKS
@@ -71,3 +71,4 @@ jobs:
         run: |
           kubectl get pods
           kubectl get svc
+
