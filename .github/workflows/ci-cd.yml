@@ -33,12 +33,12 @@ jobs:
       # 4️⃣ Build Docker Image
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/ai-app:${{ github.sha }} .
 
       # 5️⃣ Push Docker Image
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/ai-app:${{ github.sha }}
 
       # 6️⃣ Install kubectl
       - name: Install kubectl
@@ -57,8 +57,8 @@ jobs:
       # 8️⃣ Update Deployment Image
       - name: Update Kubernetes Image
         run: |
-           kubectl set image deployment/devops-app \ 
-           devops-app=${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }}
+           kubectl set image deployment/ai-app \ 
+           ai-app=${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }}
 
       # 9️⃣ Apply Kubernetes Files
       - name: Deploy to EKS
@@ -71,6 +71,7 @@ jobs:
         run: |
           kubectl get pods
           kubectl get svc
+
 
 
 
