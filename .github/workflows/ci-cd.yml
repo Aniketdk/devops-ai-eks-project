@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: ap-south-1
-  CLUSTER_NAME: ai-eks-cluster
+  CLUSTER_NAME: cicd-eks-cluster
   DOCKER_IMAGE: aniketdk/ai-app
 
 jobs:
@@ -58,3 +58,4 @@ jobs:
         kubectl apply -f k8s/
         kubectl set image deployment/ai-app-deployment ai-app=$DOCKER_IMAGE:${{ github.sha }}
         kubectl rollout status deployment/ai-app-deployment
+
